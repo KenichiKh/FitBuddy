@@ -67,6 +67,7 @@ class ComposeFragment : Fragment() {
                 //TODO: Print error log message
                 Log.i(MainActivity.TAG, "Error, No Image Found")
                 //TODO: show a toast to the user to let them know how to take a picture
+                submitPostWithoutImage(description, user)
             }
 
         }
@@ -82,6 +83,27 @@ class ComposeFragment : Fragment() {
         post.setDescription(description)
         post.setUser(user)
         post.setImage(ParseFile(file))
+        post.saveInBackground{ exception ->
+            if(exception != null){
+                //something has went wrong
+                Log.e(MainActivity.TAG, "Error while saving post")
+                exception.printStackTrace()
+                //TODO: Show a toast to tell user something has went wrong with saving post
+                Toast.makeText(requireContext(),"Post save Error", Toast.LENGTH_SHORT).show()
+            } else{
+                Log.i(MainActivity.TAG, "Successfully saved post")
+                //TODO: Resetting the EditText field to be empty
+                //TODO: Reset the ImageView to empty
+                Toast.makeText(requireContext(), "Post Successful", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+    }
+    fun submitPostWithoutImage(description: String, user: ParseUser){
+        //Create the post inject
+        val post = Post()
+        post.setDescription(description)
+        post.setUser(user)
         post.saveInBackground{ exception ->
             if(exception != null){
                 //something has went wrong
@@ -130,7 +152,7 @@ class ComposeFragment : Fragment() {
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
         if (photoFile != null) {
             val fileProvider: Uri =
-                FileProvider.getUriForFile(requireContext(), "com.codepath.fileprovider", photoFile!!)
+                FileProvider.getUriForFile(requireContext(), "com.codepath.fileprovider.FitBuddy", photoFile!!)
             intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider)
 
             // If you call startActivityForResult() using an intent that no app can handle, your app will crash.

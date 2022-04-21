@@ -5,6 +5,7 @@ import com.parse.ParseClassName
 import com.parse.ParseFile
 import com.parse.ParseObject
 import com.parse.ParseUser
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 // description : String
@@ -32,7 +33,7 @@ class Post : ParseObject() {
     fun setUser(parseUser: ParseUser){
         put(KEY_USER, parseUser)
     }
-    fun getTime (): String?{
+    fun getTime (): String? {
         return getString(KEY_TIME)
     }
     fun setTime (createdAt : Date){

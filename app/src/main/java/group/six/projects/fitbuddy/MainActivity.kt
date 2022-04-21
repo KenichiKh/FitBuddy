@@ -1,5 +1,6 @@
 package group.six.projects.fitbuddy
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -25,11 +26,12 @@ class MainActivity : AppCompatActivity() {
         return true
     }
     // Logout btn selected
-    override fun onOptionsItemSelected(item: MenuItem) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         Log.i(TAG, "Button clicked")
         ParseUser.logOut()
         val currentUser = ParseUser.getCurrentUser()
-        true
+        goToLoginActivity()
+        return true
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,6 +70,11 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.action_home
 
+    }
+
+    private fun goToLoginActivity(){
+        val intent = Intent(this@MainActivity, LoginActivity::class.java)
+        startActivity(intent)
     }
     companion object {
         const val  TAG = "MainActivity"
