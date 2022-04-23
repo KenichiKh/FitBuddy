@@ -1,4 +1,4 @@
-package group.six.projects.fitbuddy.fragments
+package com.groupsix.fitbuddy.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

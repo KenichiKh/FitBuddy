@@ -59,7 +59,7 @@ class PostAdapter(val context: Context, val posts: ArrayList<Post>): RecyclerVie
         fun bind(post: Post){
             tvDescription.text = post.getDescription()
             username.text = post.getUser()?.username
-            tvTimeStamp.text = post.getTime()
+            tvTimeStamp.text = post.getTime().toString()
 
             //Populate Image
             Glide.with(itemView.context).load(post.getImage()?.url).into(ivFileView)

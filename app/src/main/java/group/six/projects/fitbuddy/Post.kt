@@ -33,12 +33,12 @@ class Post : ParseObject() {
     fun setUser(parseUser: ParseUser){
         put(KEY_USER, parseUser)
     }
-    fun getTime (): String? {
-        return getString(KEY_TIME)
+    fun getTime (): Date? {
+        return getCreatedAt()
     }
-    fun setTime (createdAt : Date){
-        put(KEY_TIME, createdAt)
-    }
+//    fun setTime (createdAt : Date){
+//        put(KEY_TIME, createdAt)
+//    }
 
 
     companion object{

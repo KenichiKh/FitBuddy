@@ -10,11 +10,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.groupsix.fitbuddy.fragments.HealthFragment
 import com.parse.Parse
 import com.parse.ParseObject
 import com.parse.ParseUser
 import group.six.projects.fitbuddy.fragments.ComposeFragment
-import group.six.projects.fitbuddy.fragments.HealthFragment
 import group.six.projects.fitbuddy.fragments.HomeFragment
 import group.six.projects.fitbuddy.fragments.ProfileFragment
 
